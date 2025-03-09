@@ -1,0 +1,17 @@
+from flask import Flask, render_template
+from waitress import serve
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    messages = [
+        "This is a message from the server",
+        "This Flask app is displaying multiple messages",
+        "Welcome to our Flask application!",
+
+    ]
+    return render_template('displaying.html', messages=messages)
+
+if __name__ == "__main__":
+    serve(app, host='0.0.0.0', port=8080)
